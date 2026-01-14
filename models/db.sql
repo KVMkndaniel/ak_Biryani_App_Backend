@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS roles (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  mobile VARCHAR(15),
+  password VARCHAR(255),
+  role_id INT,
+  profile_image VARCHAR(255),
+  FOREIGN KEY (role_id) REFERENCES roles(id)
+);
+
+INSERT IGNORE INTO roles (name) VALUES ('customer'), ('owner'), ('admin');
+
+-- Cart table
+CREATE TABLE IF NOT EXISTS cart (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  food_id INT NOT NULL,
+  quantity INT NOT NULL DEFAULT 1,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (food_id) REFERENCES foods(id) ON DELETE CASCADE,
+  UNIQUE KEY unique_user_food (user_id, food_id)
+);
