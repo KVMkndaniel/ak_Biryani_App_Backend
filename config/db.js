@@ -5,10 +5,10 @@ dotenv.config();
 
 // Use default values if environment variables are not set
 const config = {
-  host: process.env.DB_HOST || 'dpg-d5ijuh95pdvs73c3rc6g-a.singapore-postgres.render.com',
-  user: process.env.DB_USER || 'akbriyani_user',
-  password: process.env.DB_PASS || 'cmjabVq4mTEZmTxdBBzrAf8kePAlC5ZZ',
-  database: process.env.DB_NAME || 'akbriyani',
+  host: process.env.DB_HOST || 'dpg-d5oh0rqli9vc7381ejp0-a.singapore-postgres.render.com',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASS || 'K0hpWUxxOrnwYiEgDL3LmY3akP4gjGnR',
+  database: process.env.DB_NAME || 'akbriyanidb',
   port: process.env.DB_PORT || 5432,
   ssl: {
     rejectUnauthorized: false
